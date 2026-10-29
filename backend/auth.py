@@ -1,3 +1,4 @@
+import os
 import jwt
 import bcrypt
 from datetime import datetime, timedelta
@@ -8,7 +9,7 @@ from sqlalchemy.orm import Session
 from database import get_db
 import db_models
 
-SECRET_KEY = "farmhawk-precision-agri-key-super-secret-2026"
+SECRET_KEY = os.getenv("SECRET_KEY", "farmhawk-precision-agri-key-super-secret-2026")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_DAYS = 30
 
@@ -39,7 +40,7 @@ def get_current_farmer(token: Optional[str] = Depends(oauth2_scheme), db: Sessio
             farmer = db_models.Farmer(
                 name="Farmer",
                 email="farmer1@farmhawk.com",
-                phone="+91 9981087718",
+                phone=os.getenv("DEMO_FARMER_PHONE", "+91 9876543210"),
                 password_hash=hash_password("password123")
             )
             db.add(farmer)

@@ -23,8 +23,8 @@ def get_gateway_config() -> Dict[str, str]:
         "TWILIO_WHATSAPP_NUMBER": os.getenv("TWILIO_WHATSAPP_NUMBER", ""),
         "FAST2SMS_API_KEY": os.getenv("FAST2SMS_API_KEY", ""),
         "ANDROID_GATEWAY_URL": os.getenv("ANDROID_GATEWAY_URL", ""),
-        "TEXTBEE_API_KEY": os.getenv("TEXTBEE_API_KEY", "txb_5cxpW9A3RurGBKTI5nyabOLxhYLnYiin"),
-        "TEXTBEE_DEVICE_ID": os.getenv("TEXTBEE_DEVICE_ID", "6a985411ccb6c72709ba59ae"),
+        "TEXTBEE_API_KEY": os.getenv("TEXTBEE_API_KEY", ""),
+        "TEXTBEE_DEVICE_ID": os.getenv("TEXTBEE_DEVICE_ID", ""),
     }
 
 
@@ -326,7 +326,7 @@ def dispatch_bilingual_notification(
     """
     phone = (farmer.phone or "").strip()
     if not phone:
-        phone = "+91 9981087718"
+        phone = os.getenv("DEMO_FARMER_PHONE", "+91 9876543210")
 
     cooldown_key = f"{farmer.id}_{alert_type}_{field_id or 'all'}_{title}"
     now_ts = datetime.now().timestamp()

@@ -67,7 +67,7 @@ export default function App() {
       state: "",
       district: "",
       pincode: "",
-      phone: "+91 9981087718",
+      phone: "",
       isCreated: false,
     };
   });
@@ -132,7 +132,7 @@ export default function App() {
                     prev.name.toLowerCase() !== "farmer"
                   ? prev.name
                   : "",
-              phone: res.farmer.phone || prev.phone || "+91 9981087718",
+              phone: res.farmer.phone || prev.phone || "",
               location:
                 res.farmer.location_region &&
                 !res.farmer.location_region.toLowerCase().includes("ludhiana")

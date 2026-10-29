@@ -59,7 +59,7 @@ def get_farmer_notifications(
             for log in logs
         ],
         "total": len(logs),
-        "farmer_phone": current_farmer.phone or "+91 9981087718"
+        "farmer_phone": current_farmer.phone or os.getenv("DEMO_FARMER_PHONE", "+91 9876543210")
     }
 
 
@@ -74,7 +74,7 @@ def send_test_notification(
         current_farmer.phone = req.phone
         db.commit()
 
-    phone = current_farmer.phone or req.phone or "+91 9981087718"
+    phone = current_farmer.phone or req.phone or os.getenv("DEMO_FARMER_PHONE", "+91 9876543210")
     title, msg_en, msg_hi = format_test_alert(current_farmer.name, phone)
 
     result = dispatch_bilingual_notification(
@@ -296,7 +296,7 @@ def simulate_climate_shock(
         raise HTTPException(status_code=400, detail="No shock detected for selected scenario")
 
     target_shock = shocks[0]
-    phone = req.custom_phone or current_farmer.phone or "9981087718"
+    phone = req.custom_phone or current_farmer.phone or os.getenv("DEMO_FARMER_PHONE", "+91 9876543210")
     current_farmer.phone = phone
 
     title = target_shock["title_en"]

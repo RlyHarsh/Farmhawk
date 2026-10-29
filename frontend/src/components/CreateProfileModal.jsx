@@ -43,7 +43,7 @@ export default function CreateProfileModal({
       : "",
   );
   const [phone, setPhone] = useState(
-    initialProfile?.phone || "+91 9981087718",
+    initialProfile?.phone || "",
   );
 
   const [isSearchingPincode, setIsSearchingPincode] = useState(false);
@@ -245,8 +245,8 @@ export default function CreateProfileModal({
               type="tel"
               placeholder={
                 isHindi
-                  ? "मोबाइल नंबर (उदा. +91 9981087718)"
-                  : "Mobile number (e.g. +91 9981087718)"
+                  ? "मोबाइल नंबर (उदा. +91 9876543210)"
+                  : "Mobile number (e.g. +91 9876543210)"
               }
               value={phone}
               onChange={(e) => setPhone(e.target.value)}

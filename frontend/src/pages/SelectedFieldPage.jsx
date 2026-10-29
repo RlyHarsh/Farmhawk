@@ -218,7 +218,7 @@ export default function SelectedFieldPage({
     const phoneToUse =
       editingPhone && editingPhone.trim().length >= 8
         ? editingPhone.trim()
-        : "+91 9981087718";
+        : farmerProfile?.phone || "+91 9876543210";
     const res = await sendTestNotificationApi(phoneToUse);
     if (res?.status === "success") {
       setTestNotifResult({
@@ -248,7 +248,7 @@ export default function SelectedFieldPage({
       logItem.recipient_phone ||
       (editingPhone && editingPhone.trim().length >= 8
         ? editingPhone.trim()
-        : "+91 9981087718");
+        : farmerProfile?.phone || "+91 9876543210");
     let res = await sendNotificationSmsApi(logItem.id);
     if (!res || res.status !== "success") {
       res = await sendTestNotificationApi(phoneToUse, ["SMS"]);
@@ -296,7 +296,7 @@ export default function SelectedFieldPage({
     const phoneToUse =
       editingPhone && editingPhone.trim().length >= 8
         ? editingPhone.trim()
-        : "+91 9981087718";
+        : farmerProfile?.phone || "+91 9876543210";
     const res = await simulateClimateShockApi(
       shockType,
       currentFieldId,

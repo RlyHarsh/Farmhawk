@@ -248,7 +248,7 @@ export default function DashboardPage({
                 <Phone size={12} /> {isHindi ? "संपर्क नंबर" : "Contact Number"}
               </span>
               <span className="profile-detail-value">
-                {userProfile?.phone || "+91 9981087718"}
+                {userProfile?.phone || "+91 9876543210"}
               </span>
             </div>
           </div>

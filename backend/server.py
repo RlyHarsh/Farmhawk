@@ -155,7 +155,7 @@ def login_farmer(login_in: schemas.FarmerLogin, db: Session = Depends(get_db)):
                 farmer = db_models.Farmer(
                     name="Farmer",
                     email="farmer1@farmhawk.com",
-                    phone="+91 9981087718",
+                    phone=os.getenv("DEMO_FARMER_PHONE", "+91 9876543210"),
                     password_hash=hash_password("password123")
                 )
                 db.add(farmer)
